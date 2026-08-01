@@ -1,0 +1,242 @@
+# Parsec Finance API — GraphQL operation surface
+# generated: '2026-07-20'
+# method: searched
+# source: https://github.com/parsec-finance/parsec_python_sdk (parsecfi/lib/endpoints_list/*)
+# endpoint: https://api.parsec.finance/api/v2  (POST, header: api_key)
+#
+# These operations are transcribed verbatim from the first-party Python SDK (parsecfi).
+# They document the client query surface; the full server schema (types/scalars) is not
+# published publicly. Root query fields: address, candles, liquidityPool, contract, trades,
+# lendingMarket, liquidityPools, nftCollection, nftTrades, token, tradeMetricsBins, txs,
+# transfers, trendingContracts.
+
+query Address($name: String, $address: String) {
+  address(name: $name, address: $address) {
+    name
+    address
+  }
+}
+
+query GetCandles($interval: String!, $limit: Int!, $pair: String!, $venue: String!) {
+  candles(interval: $interval, limit: $limit, pair: $pair, venue: $venue) {
+    data
+    derived
+    exchange
+    interval
+    pair
+  }
+}
+
+query LpPositions($poolAddress: String!, $inRangeOnly: Boolean!, $exchange: String!, $limit: Int!) {
+  liquidityPool(poolAddress: $poolAddress, exchange: $exchange) {
+    positions(limit: $limit, inRangeOnly: $inRangeOnly) {
+      deltaQuote
+      feeBps
+      nav
+      pair
+      positionId
+      price
+      provider
+      tickLowerPrice
+      tickUpperPrice
+      addressLabel {
+        src
+        label
+        address
+      }
+    }
+  }
+}
+
+query ContractLogs($address: String!, $chain: String!, $log: String!, $since: Int, $limit: Int, $filters: [LogFilter]) {
+  contract(address: $address, chain: $chain) {
+    logs(limit: $limit, log: $log, since: $since, filters: $filters) {
+      timestamp
+      txId
+      data
+    }
+  }
+}
+
+query Trades($since: Int, $before: Int, $from: String, $taker: String, $maker: String, $pair: String, $side: String, $sort: [String], $tx: String, $venue: String, $limit: Int!) {
+  trades(limit: $limit) {
+    venue
+    baseAmount
+    from
+    pair
+    price
+    quoteAmount
+    side
+    timestamp
+  }
+}
+
+query LendingMarket($symbol: String!, $protocol: String!) {
+  lendingMarket(symbol: $symbol, protocol: $protocol) {
+    poolId
+    poolName
+    protocol
+    supplyRate
+    borrowRate
+    collatRatio
+    history(interval: "1d", limit: 30) {
+      borrowRate
+      supplyRate
+      totalSupplied
+      totalBorrows
+      borrowRewards {
+        rateBase
+        rewardToken
+      }
+    }
+  }
+}
+
+query LiquidityPools($limit: Int!, $orderBy: String!, $orderDir: String!, $protocol: String, $symbol: String) {
+  liquidityPools(limit: $limit, orderBy: $orderBy, orderDir: $orderDir, protocol: $protocol, symbol: $symbol) {
+    address
+    swapFee
+    protocol
+    reserveUsd
+    volumeUsd
+    vlmLiqRatio
+    tokens {
+      symbol
+      balance
+      weight
+    }
+  }
+}
+
+query NftCollection($address: String!) {
+  nftCollection(address: $address) {
+    name
+    floor
+    address
+    chain
+    holdersCount
+    floor1dDelta
+    floor7dDelta
+    floor30dDelta
+  }
+}
+
+query NftTrades($limit: Int!, $trader: String, $traits: [[String]], $since: Int, $before: Int, $collectionAddress: String, $tokenId: String, $exchange: String) {
+  nftTrades(limit: $limit) {
+    chain
+    price
+    side
+    usdValue
+    thumbnailUrl
+    tokenId
+    taker
+    maker
+    timestamp
+    collectionAddress
+    collectionName
+    exchange
+    tx
+  }
+}
+
+query TokenDeltas($address: String, $limit: Int!, $lookback: String!, $chain: String!) {
+  token(address: $address, chain: $chain) {
+    balanceChanges(limit: $limit, lookback: $lookback) {
+      delta
+      balanceStart
+      balanceEnd
+      bought
+      sold
+      chain
+      address
+      addressLabel {
+        label
+      }
+    }
+  }
+}
+
+query TokenHolders($address: String!, $chain: String!, $limit: Int!) {
+  token(address: $address, chain: $chain) {
+    topHolders(limit: $limit) {
+      balance
+      address
+      addressLabel {
+        label
+      }
+    }
+  }
+}
+
+query TradeMetricsBins($chains: [String], $limit: Int!, $interval: String, $offset: Int, $venues: [String], $pairs: [String], $takers: [String]) {
+  tradeMetricsBins(chains: $chains, limit: $limit, interval: $interval, offset: $offset, venues: $venues, pairs: $pairs, takers: $takers) {
+    uniqueTakers
+    volumeUsd
+    nTrades
+    startTs
+    endTs
+  }
+}
+
+query ApiTxs($addresses: [String!]!, $limit: Int!, $chains: [String], $offset: Int, $call: String, $to: String, $from: String, $since: Int, $before: Int) {
+  txs(addresses: $addresses, limit: $limit, chains: $chains, offset: $offset, functionCall: $call, to: $to, from: $from, since: $since, before: $before) {
+    chain
+    block
+    hash
+    to
+    from
+    gasPrice
+    gasUsed
+    input
+    call
+    status
+    index
+    value
+    timestamp
+    meta
+    contract_creation
+    marketData {
+      type
+      data
+    }
+    inputDecoded {
+      function
+      args
+    }
+    message
+  }
+}
+
+query Transfers($address: String, $to: String, $chain: String, $from: String, $toOrFrom: String, $toOrFroms: [String], $tx: String, $block: Int, $limit: Int, $offset: Int) {
+  transfers(address: $address, chain: $chain, to: $to, from: $from, toOrFrom: $toOrFrom, toOrFroms: $toOrFroms, tx: $tx, block: $block, limit: $limit, offset: $offset) {
+    to
+    from
+    value
+    timestamp
+    tx
+    address
+    decimals
+    usd_price
+    usd_value
+    symbol
+    img_src
+    chain
+    is_nft
+  }
+}
+
+query TrendingContracts($chain: String!, $sortBy: String!, $limit: Int!, $lookback: String!) {
+  trendingContracts(chain: $chain, sortBy: $sortBy, limit: $limit, lookback: $lookback) {
+    address
+    chain
+    usage {
+      ethSent
+      gas
+      gasPrev
+      nTxs
+      senders
+      sendersChange
+      sendersPrev
+    }
+  }
+}

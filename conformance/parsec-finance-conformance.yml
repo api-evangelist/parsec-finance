@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: derived
+source: graphql/parsec-finance-api.graphql + authentication/parsec-finance-authentication.yml
+standards:
+- id: graphql
+  conforms: true
+  evidence: single GraphQL endpoint at /api/v2; operations use GraphQL query/variables envelope
+- id: oauth2
+  conforms: false
+  evidence: authentication is a single api_key header; no OAuth flows
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors follow the GraphQL errors[] envelope, not application/problem+json
+- id: rest
+  conforms: false
+  evidence: not a resource-oriented REST API
+notes: >-
+  Derived assertion of cross-cutting standards from the observed API shape. No
+  published compliance program (SOC 2 / ISO 27001 / PCI / HIPAA) was found, so no
+  Compliance pointer is emitted.

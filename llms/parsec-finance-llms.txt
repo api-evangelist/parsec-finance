@@ -1,0 +1,35 @@
+# Parsec Finance
+
+> Parsec Finance is an institutional-grade on-chain analytics platform for DeFi and NFT markets, exposing a Pro GraphQL API for programmatic access to real-time on-chain market data across many EVM chains. Used by firms such as Polychain and Galaxy Digital.
+
+Parsec's public API is a single GraphQL endpoint at https://api.parsec.finance/api/v2. Requests are POSTed with an `api_key` header (key prefix `par_ak_`); an API key is provisioned from the Parsec app under Settings -> Subscription and requires a Pro subscription. A first-party Python SDK (parsecfi) wraps the API.
+
+## API
+
+- [Parsec Finance API (GraphQL)](https://api.parsec.finance/api/v2): DEX trades, OHLCV candles, lending markets, liquidity pools and concentrated-liquidity positions, NFT collections and trades, token holders and balance changes, transfers, transactions, contract logs, trending contracts, trade metrics, and address resolution.
+
+## Specs
+
+- [GraphQL operation surface](graphql/parsec-finance-api.graphql): the query surface transcribed verbatim from the parsecfi SDK.
+
+## Docs
+
+- [API Documentation](https://docs.parsec.finance/)
+- [Pricing](https://parsec.fi/pricing)
+
+## SDKs
+
+- [parsecfi (Python)](https://pypi.org/project/parsecfi/): `pip install parsecfi` — source at https://github.com/parsec-finance/parsec_python_sdk
+
+## Artifacts
+
+- [Authentication](authentication/parsec-finance-authentication.yml)
+- [Conventions](conventions/parsec-finance-conventions.yml)
+- [Data model](data-model/parsec-finance-data-model.yml)
+- [MCP (candidate)](mcp/parsec-finance-mcp.yml)
+- [Agent skills](skills/_index.yml)
+
+## Links
+
+- [Website](https://parsec.fi)
+- [GitHub](https://github.com/parsec-finance)

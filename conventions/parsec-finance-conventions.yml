@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: derived
+source: graphql/parsec-finance-api.graphql + https://github.com/parsec-finance/parsec_python_sdk
+transport:
+  style: graphql
+  endpoint: https://api.parsec.finance/api/v2
+  http_method: POST
+  content_type: application/json
+  request_shape: '{ "query": "<graphql>", "variables": { ... } }'
+authentication:
+  style: api-key-header
+  header: api_key
+  ref: authentication/parsec-finance-authentication.yml
+pagination:
+  style: limit-cursor
+  params:
+    limit: Maximum rows to return (required on most list operations).
+    offset: Row offset for paged operations (txs, transfers).
+    since: Unix-seconds lower bound for time-ranged operations (trades, transfers, contract logs, txs).
+    before: Unix-seconds upper bound for time-ranged operations.
+    lookback: Named window (e.g. token deltas, trending contracts).
+  notes: Pagination is expressed as GraphQL query variables; there are no Link headers.
+filtering:
+  style: query-variables
+  notes: >-
+    List operations accept typed filter variables (chain/chains, venue/venues,
+    pair/pairs, side, maker, taker, from, to, protocol, symbol). Contract logs
+    additionally accept a structured `filters: [LogFilter]` list.
+error_envelope:
+  style: graphql
+  notes: >-
+    Responses follow the GraphQL envelope: `data` on success, an `errors[]` array
+    on failure. The SDK returns the string "Error: <status>" for non-200 HTTP
+    responses. See errors handling in conventions rather than an RFC 9457 catalog
+    (this is not a REST/problem+json API).
+idempotency:
+  supported: false
+  notes: The public surface is read-only GraphQL queries; no idempotency-key contract.
+versioning:
+  scheme: uri-path
+  current: v2
+  notes: Version is carried in the endpoint path (/api/v2).
+cross_links:
+  authentication: authentication/parsec-finance-authentication.yml
+  data_model: data-model/parsec-finance-data-model.yml

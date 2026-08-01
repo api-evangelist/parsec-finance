@@ -1,0 +1,95 @@
+generated: '2026-07-20'
+method: derived
+source: graphql/parsec-finance-api.graphql
+notes: >-
+  Entities and relationships derived from the GraphQL query surface transcribed
+  from the parsecfi SDK. The full server schema is not published, so entities are
+  inferred from returned field selections. Keyed largely by on-chain address +
+  chain rather than opaque ids.
+entities:
+- name: Address
+  root_field: address
+  keys: [address, name]
+  fields: [name, address]
+  description: A labelled on-chain address / Parsec handle.
+- name: Contract
+  root_field: contract
+  keys: [address, chain]
+  fields: [logs]
+  description: A smart contract on a chain; exposes decoded log events.
+- name: ContractLog
+  parent: Contract
+  fields: [timestamp, txId, data]
+- name: Token
+  root_field: token
+  keys: [address, chain]
+  fields: [topHolders, balanceChanges]
+- name: TokenHolder
+  parent: Token
+  fields: [balance, address, addressLabel]
+- name: TokenBalanceChange
+  parent: Token
+  fields: [delta, balanceStart, balanceEnd, bought, sold, chain, address, addressLabel]
+- name: Trade
+  root_field: trades
+  fields: [venue, baseAmount, from, pair, price, quoteAmount, side, timestamp]
+- name: NftTrade
+  root_field: nftTrades
+  fields: [chain, price, side, usdValue, tokenId, taker, maker, timestamp, collectionAddress, collectionName, exchange, tx]
+- name: NftCollection
+  root_field: nftCollection
+  keys: [address]
+  fields: [name, floor, address, chain, holdersCount, floor1dDelta, floor7dDelta, floor30dDelta]
+- name: LendingMarket
+  root_field: lendingMarket
+  keys: [poolId]
+  fields: [poolId, poolName, protocol, supplyRate, borrowRate, collatRatio, history]
+- name: LiquidityPool
+  root_field: liquidityPools / liquidityPool
+  keys: [address]
+  fields: [address, swapFee, protocol, reserveUsd, volumeUsd, vlmLiqRatio, tokens, positions]
+- name: LiquidityPosition
+  parent: LiquidityPool
+  fields: [deltaQuote, feeBps, nav, pair, positionId, price, provider, tickLowerPrice, tickUpperPrice, addressLabel]
+- name: Transaction
+  root_field: txs
+  keys: [hash]
+  fields: [chain, block, hash, to, from, gasPrice, gasUsed, input, call, status, value, timestamp, marketData, inputDecoded]
+- name: Transfer
+  root_field: transfers
+  fields: [to, from, value, timestamp, tx, address, decimals, usd_price, usd_value, symbol, chain, is_nft]
+- name: TrendingContract
+  root_field: trendingContracts
+  keys: [address, chain]
+  fields: [address, chain, usage]
+- name: TradeMetricBin
+  root_field: tradeMetricsBins
+  fields: [uniqueTakers, volumeUsd, nTrades, startTs, endTs]
+- name: Candle
+  root_field: candles
+  fields: [data, derived, exchange, interval, pair]
+relationships:
+- from: Contract
+  to: ContractLog
+  kind: has_many
+  via: logs
+- from: Token
+  to: TokenHolder
+  kind: has_many
+  via: topHolders
+- from: Token
+  to: TokenBalanceChange
+  kind: has_many
+  via: balanceChanges
+- from: LiquidityPool
+  to: LiquidityPosition
+  kind: has_many
+  via: positions
+- from: Transfer
+  to: Address
+  kind: belongs_to
+  via: from
+- from: Trade
+  to: Address
+  kind: belongs_to
+  via: from

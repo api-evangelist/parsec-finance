@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/parsec-finance/parsec_python_sdk (parsecfi/parsecfi.py) + https://docs.parsec.finance/
+docs: https://docs.parsec.finance/
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  oauth2_flows: []
+schemes:
+- name: ApiKey
+  type: apiKey
+  in: header
+  parameter_name: api_key
+  key_prefix: par_ak_
+  provisioning: Parsec app -> Settings -> Subscription -> api key
+  notes: >-
+    All requests are POSTed to the single GraphQL endpoint
+    https://api.parsec.finance/api/v2 with the API key supplied in an `api_key`
+    request header. API access requires a Pro subscription. There is no OAuth or
+    scope surface — a single account-level key authorizes the full GraphQL query
+    surface.
+  sources: [graphql/parsec-finance-api.graphql]

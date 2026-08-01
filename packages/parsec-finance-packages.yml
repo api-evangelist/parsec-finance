@@ -1,0 +1,14 @@
+generated: '2026-07-20'
+method: searched
+source: https://pypi.org/pypi/parsecfi/json + https://github.com/parsec-finance/parsec_python_sdk
+packages:
+- language: python
+  registry: pypi
+  name: parsecfi
+  version: 0.1.6
+  url: https://pypi.org/project/parsecfi/
+  repository: https://github.com/parsec-finance/parsec_python_sdk
+  install: pip install parsecfi
+  summary: Python SDK for the Parsec API
+  requires: [requests, pandas]
+  official: true

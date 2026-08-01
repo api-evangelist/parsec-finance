@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: parsec.fi
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  7 23:16:10 2026 GMT
+  hsts: null
+- host: docs.parsec.finance
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 15 00:16:09 2026 GMT
+  hsts: null
+- host: api.parsec.finance
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 15 00:16:09 2026 GMT
+  hsts: null
+domains:
+- domain: parsec.fi
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
+- domain: parsec.finance
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: false

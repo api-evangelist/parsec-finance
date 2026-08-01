@@ -1,0 +1,58 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: graphql/parsec-finance-api.graphql
+notes: >-
+  No official hosted/remote Parsec Finance MCP server was found (no entry in the
+  MCP registry, npm @modelcontextprotocol, or the docs). The tool list below is a
+  candidate derived one-to-one from the GraphQL operations documented in the
+  first-party parsecfi SDK. Not published by Parsec.
+server:
+  name: parsec-finance
+  transport: http
+tools:
+- name: resolve_address
+  description: Resolve a Parsec handle/name to an on-chain address (and vice versa).
+  source_operation: graphql/parsec-finance-api.graphql#Address
+- name: get_candles
+  description: OHLCV candles for a trading pair on a venue at an interval.
+  source_operation: graphql/parsec-finance-api.graphql#GetCandles
+- name: list_liquidity_positions
+  description: Concentrated-liquidity positions for a pool.
+  source_operation: graphql/parsec-finance-api.graphql#LpPositions
+- name: get_contract_logs
+  description: Decoded contract log events for an address/chain, filterable.
+  source_operation: graphql/parsec-finance-api.graphql#ContractLogs
+- name: list_dex_trades
+  description: DEX trade firehose filterable by pair/venue/side/maker/taker.
+  source_operation: graphql/parsec-finance-api.graphql#Trades
+- name: get_lending_market
+  description: Lending market rates and history for a symbol/protocol.
+  source_operation: graphql/parsec-finance-api.graphql#LendingMarket
+- name: list_liquidity_pools
+  description: Liquidity pools with reserves, volume and fees.
+  source_operation: graphql/parsec-finance-api.graphql#LiquidityPools
+- name: get_nft_collection
+  description: NFT collection floor, holders and floor deltas.
+  source_operation: graphql/parsec-finance-api.graphql#NftCollection
+- name: list_nft_trades
+  description: NFT trade firehose filterable by collection/trader/exchange.
+  source_operation: graphql/parsec-finance-api.graphql#NftTrades
+- name: get_token_deltas
+  description: Largest token balance changes over a lookback window.
+  source_operation: graphql/parsec-finance-api.graphql#TokenDeltas
+- name: get_token_holders
+  description: Top holders of a token on a chain.
+  source_operation: graphql/parsec-finance-api.graphql#TokenHolders
+- name: get_trade_metrics
+  description: Binned trade metrics (volume, trade count, unique takers).
+  source_operation: graphql/parsec-finance-api.graphql#TradeMetricsBins
+- name: list_transactions
+  description: Decoded transactions for addresses across chains.
+  source_operation: graphql/parsec-finance-api.graphql#ApiTxs
+- name: list_transfers
+  description: Token/native transfers filterable by address/tx/block.
+  source_operation: graphql/parsec-finance-api.graphql#Transfers
+- name: list_trending_contracts
+  description: Trending contracts by usage over a lookback window.
+  source_operation: graphql/parsec-finance-api.graphql#TrendingContracts

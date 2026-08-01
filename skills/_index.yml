@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: generated
+source: graphql/parsec-finance-api.graphql
+skills:
+- file: parsec-finance-track-wallet-activity.md
+  name: Track a wallet's on-chain activity
+  api: graphql/parsec-finance-api.graphql
+  operations: [Address, Transfers, ApiTxs]
+- file: parsec-finance-monitor-dex-trades.md
+  name: Monitor DEX trades and trade metrics
+  api: graphql/parsec-finance-api.graphql
+  operations: [Trades, TradeMetricsBins, GetCandles]
+- file: parsec-finance-analyze-token.md
+  name: Analyze a token's holders and flows
+  api: graphql/parsec-finance-api.graphql
+  operations: [TokenHolders, TokenDeltas, Transfers]
