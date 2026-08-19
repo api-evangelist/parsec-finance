@@ -2,11 +2,9 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: graphql/parsec-finance-api.graphql
-notes: >-
-  No official hosted/remote Parsec Finance MCP server was found (no entry in the
-  MCP registry, npm @modelcontextprotocol, or the docs). The tool list below is a
-  candidate derived one-to-one from the GraphQL operations documented in the
-  first-party parsecfi SDK. Not published by Parsec.
+notes: No official hosted/remote Parsec Finance MCP server was found (no entry in the MCP registry, npm
+  @modelcontextprotocol, or the docs). The tool list below is a candidate derived one-to-one from the
+  GraphQL operations documented in the first-party parsecfi SDK. Not published by Parsec.
 server:
   name: parsec-finance
   transport: http
@@ -56,3 +54,9 @@ tools:
 - name: list_trending_contracts
   description: Trending contracts by usage over a lookback window.
   source_operation: graphql/parsec-finance-api.graphql#TrendingContracts
+deployment:
+  mode: none
+  verified: derived
+  tools: 15
+  checked: '2026-08-12'
+  source: catalog MCP census
