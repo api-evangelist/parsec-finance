@@ -64,6 +64,94 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Parsec Finance is a company surfaced as a portfolio company of polychain and added to the API Evangelist network as a stub for enrichment. Sector: analytics. This profile is a lead awaiting the enrichment pipeline.
+Parsec Finance is an institutional-grade on-chain analytics platform for DeFi and NFT markets. Its modular "Command Center" lets traders and analysts drag and drop dozens of real-time components — live trade firehoses, liquidity-depth charts, wallet trackers, lending dashboards and NFT floor monitors — across many EVM chains. Beyond the app, Parsec exposes a Pro GraphQL API at api.parsec.finance for programmatic access to on-chain market data: DEX trades, OHLCV candles, lending markets, liquidity pools (including concentrated-liquidity positions), NFT collections and trades, token holders and balance changes, transfers, transactions, contract logs, trending contracts, trade metrics and address label resolution. A first-party Python SDK (parsecfi) wraps the API. Parsec is used by firms such as Polychain and Galaxy Digital.
 
-Backed by: polychain — https://parsec.fi
+**Areas:** Company · Analytics · DeFi · NFT · Blockchain · Cryptocurrency · On-Chain Data · Web3 · GraphQL · Trading
+
+## Parsec Finance on APIs.io
+
+Everything profiled for Parsec Finance is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/parsec-finance/](https://apis.io/providers/parsec-finance/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Parsec Finance API](https://apis.io/apis/parsec-finance/parsec-finance-api/) — Pro GraphQL API for on-chain DeFi and NFT market data — DEX trades, candles, lending markets, liquidity pools and positions, NFT collections and trades,…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [parsec-finance](https://apis.io/servers/parsec-finance/parsec-finance/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Parsec Finance Authentication](https://apis.io/security/parsec-finance/parsec-finance-authentication/)
+- [Parsec Finance Domain Security](https://apis.io/security/parsec-finance/parsec-finance-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://parsec.fi)
+- [Documentation](https://docs.parsec.finance/)
+- [API reference](https://docs.parsec.finance/)
+- [Pricing](https://parsec.fi/pricing)
+- [GitHub](https://github.com/parsec-finance)
+
+## API Evangelist rating
+
+**Kin Score 20.1** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 29.8 |
+| Contract governance | 4.5 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 20.8 |
+| Access clarity | 5.3 |
+
+**Agent readiness 16.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.7** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/parsec-finance/](https://apis.io/providers/parsec-finance/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Parsec Finance: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/parsec-finance/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
